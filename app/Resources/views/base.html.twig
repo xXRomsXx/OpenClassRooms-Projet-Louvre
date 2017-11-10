@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang = "fr">
+
+    <head>
+
+        <meta charset="UTF-8" />
+        <meta http-equiv = "X-UA-COMPATIBLE" content = "IE = edge" />
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1, user-scalable = no" />
+
+        <title>{% block title %}Musée du Louvre{% endblock %}</title>
+
+        {% block stylesheets %}
+
+            <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+            <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <link rel = "stylesheet" href = "{{ asset('CSS/Aristo/Aristo.css') }}" />
+            <link rel = "stylesheet" href = "{{ asset('CSS/style.css') }}" />
+
+        {% endblock %}
+
+    </head>
+
+    <body data-spy = "scroll" data-target = "#home-wrap">
+
+<!--                                                     Navbar
+=====================================================================================================================-->
+
+    <div id = "home-wrap">
+
+        {% block messages %}
+
+            <div class = "text-center" id = "message-flash"></div>
+
+        {% endblock %}
+
+        <header id = "myScrollspy">
+
+            <div id = "header-position">
+
+                {% block logo %}{% endblock %}
+
+                <div id = "icon" class = "navbar-toggle collapsed hidden-lg hidden-md hidden-sm">
+
+                    <div id = "hamburger"></div>
+
+                </div>
+
+                {% block menu %}{% endblock %}
+
+                <div class = "text-center hidden-xs">
+
+                    <span class = "glyphicon glyphicon-copyright-mark" aria-hidden = "true"></span> Rom's 2017
+
+                </div>
+
+            </div>
+
+        </header>
+
+        {% block menuXs %}{% endblock %}
+
+    {% block body %}{% endblock %}
+
+    </div>
+
+        {% block javascript %}
+
+            <script src = "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        {% endblock %}
+
+    </body>
+
+</html>

@@ -1,0 +1,1542 @@
+/*                                                Polices
+======================================================================================================================*/
+
+
+
+/*                                              Eléments de base
+======================================================================================================================*/
+
+body {
+
+    width: 100%;
+    margin: 0;
+    background-color: #efefef;
+    position: relative;
+    color: #666666;
+    font-family: "Palatino Linotype", Arial, sans-serif;
+
+}
+
+/*                                                  Navbar
+======================================================================================================================*/
+
+#home-wrap header {
+
+    width: 140px;
+    background: white;
+    padding: 30px 0;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#home-wrap header:hover {
+
+    opacity: 1;
+
+}
+
+#header-position {
+
+    position: fixed;
+    top: 10px;
+    left: 0;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+#logo {
+
+    width: 135px;
+    height: 135px;
+    padding: 0;
+    margin: 0;
+
+}
+
+#menu-xs {
+
+    display: none;
+
+}
+
+#menu ul {
+
+    list-style: none;
+    padding: 0;
+    text-align: center;
+
+}
+
+#menu a {
+
+    text-decoration: none;
+
+}
+
+#menu li {
+
+    padding-bottom: 30px;
+    color: #666666;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#menu li:hover {
+
+    opacity: 1;
+
+}
+
+#home-wrap {
+
+    display: flex;
+    min-height: 100vh;
+
+}
+
+#home-sections {
+
+    flex: 1;
+
+}
+
+/*                  Medias Queries                  */
+
+@media screen and (max-width: 768px) {
+
+
+
+    #home-wrap {
+
+        display: block;
+
+    }
+
+    #home-wrap header {
+
+        width: auto;
+        padding: 20px 0;
+
+    }
+
+    #header-position {
+
+        position: relative;
+        bottom: auto;
+        left: auto;
+        top: auto;
+        flex-direction: row;
+        align-items: center;
+
+    }
+
+    #logo {
+
+        height: 80px;
+        margin-left: 20px;
+
+    }
+
+    #icon {
+
+        position: absolute;
+        top: 37%;
+        left: 88%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 40px;
+        cursor: pointer;
+        border: none;
+        opacity: 0.7;
+        transition: all 0.3s ease-in-out;
+
+    }
+
+    #icon:hover {
+
+        background: transparent;
+        opacity: 1;
+
+    }
+
+    #hamburger {
+
+        width: 30px;
+        height: 3px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 1px 1px 5px #666666;
+        transition: all 0.3s ease-in-out;
+
+    }
+
+    #hamburger:before, #hamburger:after {
+
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 3px;
+        background: black;
+        box-shadow: 1px 1px 5px #666666;
+        transition: all 0.3s ease-in-out;
+
+    }
+
+    #hamburger:before {
+
+        top: -10px;
+
+    }
+
+    #hamburger:after {
+
+        top: 10px;
+
+    }
+
+    #icon.isActive #hamburger {
+
+        background: white;
+        box-shadow: none;
+
+    }
+
+    #icon.isActive #hamburger:before {
+
+        top: 0;
+        transform: rotate(45deg);
+
+    }
+
+    #icon.isActive #hamburger:after {
+
+        top:0;
+        transform: rotate(135deg);
+
+    }
+
+    #menu {
+
+        display: none;
+
+    }
+
+    #menu-xs {
+
+        display: block;
+        border-top: 1px solid #666666;
+        background: white;
+
+    }
+
+    #menu-xs ul {
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    #menu-xs a {
+
+        text-decoration: none;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    #menu-xs li {
+
+        padding: 10px 0;
+        color: #666666;
+        opacity: 0.7;
+        transition: all 0.3s ease-in-out;
+
+    }
+
+    #menu-xs li:hover {
+
+        background: #000000;
+        color: white;
+        opacity: 1;
+
+    }
+
+}
+
+/*                                               Home Page Content
+======================================================================================================================*/
+
+/*                  Base                    */
+
+.flex {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.flex-column {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.flex-center {
+
+    justify-content: center;
+
+}
+
+.flex-space-around {
+
+    justify-content: space-around;
+
+}
+
+.flex-align-items-center {
+
+    align-items: center;
+
+}
+
+.col-1 {
+
+    max-width: 400px;
+    margin-left: 300px;
+    color: #efefef;
+
+}
+
+.col-2 {
+
+    width: 50%;
+    margin: 0;
+    color: #efefef;
+
+}
+
+.col-3 {
+
+    width: 100%;
+    margin: 0;
+    color: #efefef;
+
+}
+
+/*                  Introduction                    */
+
+#introduction {
+
+    background: url('../Images/introductionBackground.jpg');
+    background-size: cover;
+    height: 450px;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#introduction:hover {
+
+    opacity: 1;
+
+}
+
+#intro-overlay {
+
+    background-color: rgba(70, 8, 68, 0.5);
+    padding: 20px 0;
+    height: 450px;
+
+}
+
+.col-1 h2 {
+
+    padding-bottom: 120px;
+    line-height: 1.5em;
+
+}
+
+.col-1 p {
+
+    font-size: 1.5em;
+    margin-left: 170px;
+
+}
+
+/*                  Billets                 */
+
+#billets {
+
+    background: url('../Images/billetsBackground.jpg');
+    max-height: 450px;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#billets:hover {
+
+    opacity: 1;
+
+}
+
+#billets-overlay {
+
+    background-color: rgba(50, 50, 50, 0.5);
+    max-height: 450px;
+
+}
+
+.order-first {
+
+    order: -1;
+    padding-top: 70px;
+    max-height: 450px;
+
+}
+
+.order-first h2 {
+
+    line-height: 1.5em;
+    padding: 0 20px;
+
+}
+
+.boutonBillets {
+
+    margin-top: 20px;
+    width: 30%;
+    height: 15%;
+    font-size: 1.2em;
+    color: #efefef;
+    background-color: transparent;
+    border: 2px solid #efefef;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.boutonBillets:hover {
+
+    opacity: 1;
+    background-color: #efefef;
+    color: #666666;
+
+
+}
+
+.imagesBillets {
+
+    display: flex;
+    height: 150px;
+
+}
+
+#billets img {
+
+    width: 25%;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#billets img:hover {
+
+    opacity: 1;
+
+}
+
+/*                  Informations                    */
+
+#infos {
+
+    background: url('../Images/infosBackground.jpg');
+    background-size: cover;
+    background-position: bottom;
+    max-height: 450px;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#infos:hover {
+
+    opacity: 1;
+
+}
+
+#infos-overlay {
+
+    background-color: rgba(150, 30, 40, 0.6);
+    max-height: 450px;
+
+}
+
+#infos h2 {
+
+    padding: 150px 30px;
+
+}
+
+/*                  Carousel                    */
+
+#infosCarousel {
+
+    height: 450px;
+
+}
+
+.carousel-inner {
+
+    height: 50%;
+    width: 78%;
+    margin-left: 70px;
+    margin-top: 112.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.item ul {
+
+    list-style: none;
+    padding: 0;
+
+}
+
+.carousel .carousel-control {
+
+    background: transparent;
+
+}
+
+/*                  Contact                 */
+
+#contact {
+
+    background: url('../Images/contact.png');
+    background-size: cover;
+    max-height: 450px;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#contact:hover {
+
+    opacity: 1;
+
+}
+
+#contact-overlay {
+
+    background: rgba(0, 0, 0, 0.7);
+
+}
+
+#contact h2 {
+
+    margin: 40px 0;
+
+}
+
+#contact-block {
+
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-bottom: 40px;
+
+}
+
+.col-3 #block-text-container, .col-3 #block-API-container {
+
+    display: flex;
+    justify-content: center;
+    height: 238px;
+
+}
+
+.col-3 #block-text, .col-3 #block-API {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    background: black;
+    height: 238px;
+    width: 400px;
+    opacity: 0.6;
+
+}
+
+#telephone, #email, #adresse {
+
+    width: 100%;
+    padding: 20px 0;
+    color: darkred;
+    text-align: left;
+
+}
+
+.col-3 #block-text span {
+
+    background: #efefef;
+    border-radius: 50%;
+    padding: 6px;
+    vertical-align: middle;
+    margin: 0px 10px 0 80px;
+    opacity: 0.6;
+
+}
+
+.gm-style-cc {
+
+    display: none;
+
+}
+
+/*                  Médias Queries                  */
+
+@media screen and (max-width: 1000px) {
+
+    .col-3 #block-text, .col-3 #block-API {
+
+        width: 320px;
+
+    }
+
+    .col-3 #block-text span {
+
+        margin-left: 50px;
+
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    /*                  Base                    */
+
+    .flex {
+
+        flex-direction: column;
+
+    }
+
+    .col-1 {
+
+        max-width: 100%;
+        margin-left: 30px;
+
+    }
+
+    .col-2 {
+
+        width: 100%;
+        max-height: 225px;
+
+    }
+
+    /*                  Introduction                    */
+
+    .col-1 h2 {
+
+        font-size: 1.2em;
+        padding-bottom: 340px;
+
+    }
+
+    .col-1 p {
+
+        margin-left: 80px;
+        font-size: 1em;
+
+    }
+
+    /*                  Billets                 */
+
+    .imagesBillets {
+
+        max-height: 75px;
+
+    }
+
+    .order-first {
+
+        order: 1;
+        padding: 20px 0;
+        height: 250px
+
+    }
+
+    .order-first h2 {
+
+        font-size: 1.5em;
+
+    }
+
+    .boutonBillets {
+
+        margin: 30px 0;
+        width: 30%;
+        height: 30%;
+        font-size: 1em;
+        color: #efefef;
+
+    }
+
+    /*                  Informations                    */
+
+    #infosCarousel {
+
+        order: 2;
+        margin: 0 0 30px 0;
+
+    }
+
+    .carousel-inner {
+
+        margin: 0;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    #infos h2 {
+
+        padding: 10px 0;
+        font-size: 1.5em;
+
+    }
+
+    /*                  Contact                 */
+
+    #contact h2 {
+
+        padding: 10px 20px;
+        font-size: 1.5em;
+
+    }
+
+    #contact-block {
+
+        flex-direction: column-reverse;
+        margin: 0;
+
+    }
+
+    .col-3 #block-API {
+
+        width: 100%;
+
+    }
+
+    .col-3 #block-text {
+
+        height: 200px;
+
+    }
+
+    .col-3 #block-API-container {
+
+        height: 200px;
+        margin: 40px 0 0 0;
+
+    }
+
+    .col-3 #block-API {
+
+        height: 200px;
+
+    }
+
+    #telephone, #email, #adresse {
+
+        padding: 10px 0;
+
+    }
+
+}
+
+/*                                                Billetterie Content
+======================================================================================================================*/
+
+/*                  Base                    */
+
+#billetterie-sections {
+
+    flex: 1;
+
+}
+
+.col-4 {
+
+    width: 80%;
+    margin: 0;
+    color: #efefef;
+
+}
+
+#billetterie-sections form {
+
+    width: 100%;
+    margin: 0;
+    position: relative;
+    top: 0;
+    padding: 0;
+
+}
+
+#ticketInformations {
+
+    background: rgba(255, 255, 255, 1);
+    width: 18%;
+    height: 100vh;
+    margin: 0;
+    color: #efefef;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+}
+
+/*                  Navbar                  */
+
+.ticketJournee, .ticketDemiJournee, .boutonMenuAccueil {
+
+    width: 100%;
+    height: 10vh;
+    background: transparent;
+    border: none;
+
+}
+
+.ticketJournee:hover, .ticketDemiJournee:hover, .boutonMenuAccueil:hover {
+
+    background: #060606;
+    color: #efefef;
+
+}
+
+.boutonMenuActif {
+
+    background: #060606;
+    color: #efefef;
+
+}
+
+/*                  Etape 1                 */
+
+#etape1 {
+
+    background: url('../Images/billetterie.jpg');
+    background-size: cover;
+    background-position: right bottom;
+    min-height: 450px;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#etape1:hover {
+
+    opacity: 1;
+
+}
+
+#etape1-overlay {
+
+    background: rgba(30, 0, 10, 0.7);
+    min-height: 450px;
+
+}
+
+#etape1 h2 {
+
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding : 20px 0 30px 20px;
+    margin: 0;
+
+}
+
+.datepicker {
+
+    display: flex;
+    width: 100%;
+    height: 367px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+}
+
+.ui-datepicker {
+
+    width: 50%;
+    opacity: 0.4;
+
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+
+    text-align: center;
+
+}
+
+/*                  Etape 2                 */
+
+#etape2 {
+
+    background: url('../Images/clock.jpg');
+    background-size: cover;
+    min-height: 450px;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#etape2:hover {
+
+    opacity: 1;
+
+}
+
+#etape2-overlay {
+
+    background: rgba(30, 0, 10, 0.7);
+    min-height: 450px;
+
+}
+
+#etape2 h2 {
+
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding : 20px 0 30px 20px;
+    margin: 0;
+
+}
+
+#horaires {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 367px;
+    padding: 40px 0;
+
+}
+
+#matin, #apres-midi {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0;
+
+}
+
+.boutonHoraires {
+
+    width: 100px;
+    height: 50px;
+    border: 2px solid #efefef;
+    color: #efefef;
+    background: transparent;
+    opacity: 0.6;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.boutonHoraires:hover, .boutonHoraireActif {
+
+    background: #efefef;
+    color: #060606;
+    opacity: 1;
+
+}
+
+/*                  Etape 3                 */
+
+#etape3 {
+
+    background: url('../Images/etape3Background.jpg');
+    background-size: cover;
+    background-position: bottom center;
+    min-height: 450px;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#etape3:hover {
+
+    opacity: 1;
+
+}
+
+#etape3-overlay {
+
+    background: rgba(0, 0, 0, 0.7);
+    min-height: 450px;
+
+}
+
+#etape3 h2 {
+
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding : 20px 0 30px 20px;
+    margin: 0;
+
+}
+
+#nombreTicket {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 367px;
+    padding: 40px 0;
+
+}
+
+#oneToFive, #sixToTen {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0;
+
+}
+
+.boutonNombreTicket {
+
+    width: 100px;
+    height: 50px;
+    border: 2px solid #efefef;
+    color: #efefef;
+    background: transparent;
+    opacity: 0.6;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.boutonNombreTicket:hover, .boutonTicketActif {
+
+    background: #efefef;
+    color: #060606;
+    opacity: 1;
+
+}
+
+/*                  ticket informations                 */
+
+#prix {
+
+    margin: 50px 0 20px 0;
+    text-align: center;
+    color: #060606;
+
+}
+
+#boutonsSubmit {
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+
+}
+
+#appbundle_reservation_Annuler, #appbundle_reservation_Continuer {
+
+    width: 100px;
+    height: 50px;
+    border: 2px solid #060606;
+    color: #060606;
+    background: transparent;
+    margin: 0 10px;
+    opacity: 0.6;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#appbundle_reservation_Annuler:hover, #appbundle_reservation_Continuer:hover {
+
+    background: #060606;
+    color: #efefef;
+    opacity: 1;
+
+}
+
+.messageDemiJournee, .messageDemiTarif, .messageNbTicketsInvalide {
+
+    color: #880000;
+    border: 2px solid #880000;
+    width: 80%;
+    margin: 40px auto;
+
+}
+
+.messageNbTicketsValide {
+
+    color: #4cae4c;
+    border: 2px solid #4cae4c;
+    width: 80%;
+    margin: 40px auto;
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    #boutonsSubmit {
+
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    #boutonsSubmit button {
+
+        margin: 5px 0;
+
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    #ticketInformations {
+
+        width: 100%;
+        height: 30vh;
+        position: fixed;
+        opacity: 0;
+
+    }
+
+    #prix {
+
+        margin: 20px 0 20px 0;
+
+    }
+
+    #boutonsSubmit {
+
+        flex-direction: row;
+
+    }
+
+    #boutonsSubmit button {
+
+        margin: 0 5px;
+
+    }
+
+    .col-4 {
+
+        width: 100%;
+
+    }
+
+
+
+}
+
+
+/*                                                Tickets Content
+======================================================================================================================*/
+
+/*                  Reservation section                 */
+
+#message-flash {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 10vh;
+    top: 0;
+    position: fixed;
+    font-size: 1.4em;
+    color: #efefef;
+    opacity: 0.8;
+    z-index: 5;
+
+}
+
+.message {
+
+    display: flex;
+    align-items: center;
+
+}
+
+.message-erreur {
+
+    background-color: #AA3333;
+    border-top: 2px solid #880000;
+    border-bottom: 2px solid #880000;
+
+}
+
+.message-succes {
+
+    background-color: #5cb85c;
+    border-top: 2px solid #4cae4c;
+    border-bottom: 2px solid #4cae4c;
+
+}
+
+#reservation-sections {
+
+    flex: 1;
+
+}
+
+#reservation-sections form {
+
+    width: 100%;
+    margin: 0;
+    position: relative;
+    top: 0;
+    padding: 0;
+
+}
+
+.formulaireTicket {
+
+    background: url('../Images/billetterie.jpg') fixed;
+    background-size: cover;
+    background-position: right bottom;
+    opacity: 0.7;
+    min-height: 100vh;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.formulaireTicket:hover {
+
+    opacity: 1;
+
+}
+
+.formulaireTicket-overlay {
+
+    background: rgba(30, 0, 10, 0.7);
+    min-height: 100vh;
+
+}
+
+.formulaireTicket h4 {
+
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding : 20px 0 30px 20px;
+    margin: 0;
+
+}
+
+.formulaireClientWrap {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 70px);
+
+}
+
+.formulaireClient {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vh;
+    height: 85vh;
+    background: #060606;
+    opacity: 0.5;
+    transition: all 0.8s ease-in-out;
+
+}
+
+.formulaireClient.valide {
+
+    height: 30vh;
+    width: 30vh;
+    border-radius: 50%;
+    background: transparent;
+    border: 15px solid #5cb85c;
+    color: #5cb85c;
+
+}
+
+.checkSign {
+
+    height: 30vh;
+    width: 25vh;
+
+}
+
+.formulaireClient input, .formulaireClient select {
+
+    color: #060606;
+    width: 70vh;
+    margin: 5px 0;
+
+}
+
+.bouton-ticket {
+
+    background: #337ab7;
+    border-color: #2e6da4;
+    color: #efefef;
+    transition: all 0.3s ease-in-out
+
+}
+
+.bouton-ticket:hover {
+
+    background: #5cb85c;
+    border-color: #4cae4c;
+
+}
+
+#appbundle_ticket_Annuler, #appbundle_ticket_Payer {
+
+    width: 100px;
+    height: 50px;
+    border: 2px solid #060606;
+    color: #060606;
+    background: transparent;
+    margin: 0 10px;
+    opacity: 0.6;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#appbundle_ticket_Annuler:hover, #appbundle_ticket_Payer:hover {
+
+    background: #060606;
+    color: #efefef;
+    opacity: 1;
+
+}
+
+/*                  Paiement section                    */
+
+#paiement-sections {
+
+    flex: 1;
+    position: relative;
+    top: -100vh;
+    animation: slideDown 1s ease-in-out 1 normal forwards;
+
+}
+
+@keyframes slideDown {
+
+    0% {
+
+        top: -100vh;
+
+    }
+
+    100% {
+
+        top: 0;
+
+    }
+
+}
+
+#paiement {
+
+    background: url('../Images/paiment-background.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    color: #efefef;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#paiement:hover {
+
+    opacity: 1;
+
+}
+
+#paiement-overlay {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(71, 51, 25, 0.7);
+    min-height: 100vh;
+    width: 100%;
+
+}
+
+.formulairePaimentWrap {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vh;
+    height: 50vh;
+    background: #060606;
+    opacity: 0.5;
+    transition: all 0.8s ease-in-out;
+
+}
+
+#formulairePaiement {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+#formulairePaiement p {
+
+    width: 70vh;
+    margin: 5px 0;
+
+}
+
+#formulairePaiement input {
+
+    color: #060606;
+
+}
+
+#dateExpiration {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+#dateExpiration span {
+
+    font-size: 1.5em;
+
+}
+
+#moisExpiration, #anneeExpiration {
+
+    width: 45%;
+
+}
+
+.bouton-paiement {
+
+    margin: 5px 0;
+    background: #337ab7;
+    border-color: #2e6da4;
+    color: #efefef;
+    transition: all 0.3s ease-in-out
+
+}
+
+.bouton-paiement:hover {
+
+    background: #5cb85c;
+    border-color: #4cae4c;
+
+}
+
+/*                  Thank you page                  */
+
+#thankYouPage {
+
+    background: url('../Images/thankYouPageBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+
+}
+
+#thankYouPageOverlay {
+
+    width: 100%;
+    height: 100vh;
+    background: rgba(20, 20, 20, 0.7);
+
+}
+
+#thankYouPageContent {
+
+    width: 100%;
+    height: 100vh;
+
+}
+
+#thankYouMessage {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50vh;
+    background: #060606;
+    opacity: 0.4;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#thankYouMessage:hover {
+
+    opacity: 0.7;
+
+}
+
+#thankYouCheckSign {
+
+    height: 40%;
+    width: 40%;
+
+}
+
+#homePageCTA {
+
+    background: #337ab7;
+    border-color: #2e6da4;
+    color: #efefef;
+    transition: all 0.3s ease-in-out
+
+}
+
+#homePageCTA:hover {
+
+    background: #5cb85c;
+    border-color: #4cae4c;
+
+}

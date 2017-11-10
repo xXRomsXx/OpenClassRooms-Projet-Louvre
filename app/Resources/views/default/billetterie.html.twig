@@ -1,0 +1,721 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{ parent() }} - Acheter mes tickets
+
+{% endblock %}
+
+{% block logo %}
+
+    <a href = "#billetterie-sections"><img id = "logo" src = "{{ asset('Images/logo.png') }}" alt = "Logo" /></a>
+
+{% endblock %}
+
+{% block menu %}
+
+    <nav id = "menu">
+
+        <ul>
+
+            <a href = "#journée"><li><button class = "active ticketJournee"  value = "journée">Ticket journée</button></li></a>
+            <a href = "#demi-journée"><li><button class = "ticketDemiJournee" value = "demi-journée">Ticket demi-journée</button></li></a>
+            <a href = "{{ path('homepage') }}"><li><button class = "boutonMenuAccueil">Accueil</button></li></a>
+
+        </ul>
+
+    </nav>
+
+{% endblock %}
+
+{% block menuXs %}
+
+    <nav id = "menu-xs">
+
+        <ul>
+
+            <a href = "#journée"><li><button class = "active ticketJournee"  value = "journée">Ticket journée</button></li></a>
+            <a href = "#demi-journée"><li><button class = "ticketDemiJournee" value = "demi-journée">Ticket demi-journée</button></li></a>
+            <a href = "{{ path('homepage') }}"><li><button class = "boutonMenuAccueil">Accueil</button></li></a>
+
+        </ul>
+
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+    <div id = "billetterie-sections">
+
+        {{ form_start(reservationForm, {'action': path('add_reservation')}) }}
+
+        <section id = "etape1">
+
+            <div id = "etape1-overlay">
+
+                <div class = "flex">
+
+                    <div class = "col-4">
+
+                        <h2>1. Choisissez une date:</h2>
+
+                        <div class = "hidden">
+
+                            {{ form_widget(reservationForm.date) }}
+
+                        </div>
+
+                        <div class = "datepicker"></div>
+
+                    </div> {# col-4 #}
+
+                </div> {# flex #}
+
+            </div> {# billetterie-sections-overlay #}
+
+        </section> {# etape1 #}
+
+        <section id = "etape2">
+
+            <div id = "etape2-overlay">
+
+                <div class = "flex">
+
+                    <div class = "col-4">
+
+                        <h2>2. Choisissez un horaire:</h2>
+
+                        <div class = "hidden">
+
+                            {{ form_widget(reservationForm.horaire) }}
+                            {{ form_widget(reservationForm.type_ticket) }}
+
+                        </div>
+
+                        <div id = "horaires">
+
+                            <div id = "matin">
+
+                                <button class = "boutonHoraires" value = "08H00">08H00</button>
+                                <button class = "boutonHoraires" value = "09H00">09H00</button>
+                                <button class = "boutonHoraires" value = "10H00">10H00</button>
+                                <button class = "boutonHoraires" value = "11H00">11H00</button>
+                                <button class = "boutonHoraires" value = "12H00">12H00</button>
+                                <button class = "boutonHoraires" value = "13H00">13H00</button>
+
+                            </div>
+
+                            <div id = "apres-midi">
+
+                                <button class = "boutonHoraires" value = "14H00">14H00</button>
+                                <button class = "boutonHoraires" value = "15H00">15H00</button>
+                                <button class = "boutonHoraires" value = "16H00">16H00</button>
+                                <button class = "boutonHoraires" value = "17H00">17H00</button>
+                                <button class = "boutonHoraires" value = "18H00">18H00</button> 
+
+                            </div>
+
+                        </div>
+
+                    </div> {# col-4 #}
+
+                </div> {# flex #}
+
+            </div> {# etape2-overlay #}
+
+        </section> {# etape2 #}
+
+        <section id = "etape3">
+
+            <div id = "etape3-overlay">
+
+                <div class = "flex">
+
+                    <div class = "col-4">
+
+                        <h2>3. Choisissez un nombre de ticket:</h2>
+
+                        <div class = "hidden">
+
+                            {{ form_widget(reservationForm.nombre_ticket) }}
+
+                        </div>
+
+                        <div id = "nombreTicket">
+
+                            <div id = "oneToFive">
+
+                                <button class = "boutonNombreTicket" value = "1">1</button>
+                                <button class = "boutonNombreTicket" value = "2">2</button>
+                                <button class = "boutonNombreTicket" value = "3">3</button>
+                                <button class = "boutonNombreTicket" value = "4">4</button>
+                                <button class = "boutonNombreTicket" value = "5">5</button>
+
+                            </div>
+
+                            <div id = "sixToTen">
+
+                                <button class = "boutonNombreTicket" value = "6">6</button>
+                                <button class = "boutonNombreTicket" value = "7">7</button>
+                                <button class = "boutonNombreTicket" value = "8">8</button>
+                                <button class = "boutonNombreTicket" value = "9">9</button>
+                                <button class = "boutonNombreTicket" value = "10">10</button>
+
+                            </div>
+
+                        </div>
+
+                    </div> {# col-4 #}
+
+                </div> {# flex #}
+
+            </div> {# etape3-overlay #}
+
+        </section> {# etape3 #}
+
+    </div> {# billetterie-sections #}
+
+    <div id = "ticketInformations">
+
+        <div id = "prix">
+
+            <h4>Total:</h4>
+
+            <p id = "prixTotal">0€</p>
+
+        </div>
+
+        <div id = "boutonsSubmit" class = "text-center">
+
+            {{ form_widget(reservationForm.Annuler) }}
+            {{ form_widget(reservationForm.Continuer) }}
+
+        </div>
+
+        <hr />
+
+        <div class = "messageNbTickets text-center"></div>
+
+        <div class = "messageDemiJournee text-center">
+
+            <h5>Ticket demi-journée:</h5>
+            <p>entrée à partir de 14H.</p>
+
+        </div>
+
+        {{ form_end(reservationForm) }}
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+    {{ parent() }}
+
+    <script>
+
+        $(window).on('load', function() {
+
+            /*                  Déclaration des variables                   */
+
+            var $ticketJournee = $('.ticketJournee');
+            var $ticketDemiJournee = $('.ticketDemiJournee');
+            var $inputTypeTicket = $('[name = "appbundle_reservation[type_ticket]"]');
+            var $inputDate = $('[name = "appbundle_reservation[date]"]');
+            var $boutonHoraires = $('.boutonHoraires');
+            var $boutonNbTickets = $('.boutonNombreTicket');
+            var $prixTotal = $('#prixTotal');
+            var $boutonAnnuler = $('[name = "appbundle_reservation[Annuler]"]');
+            var $boutonContinuer = $('[name = "appbundle_reservation[Continuer]"]');
+            var $messageDemiJournee = $('.messageDemiJournee');
+            var $messageNbTickets = $('.messageNbTickets');
+            var $ticketInformations = $('#ticketInformations');
+            var capaciteMax = 0;
+
+            /*                  Date et Heure du jour                  */
+
+            var $date = new Date();
+
+            var $jours = ["00","01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
+            var $mois = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+
+            var $J = $jours[$date.getDate()];
+            var $M = $mois[$date.getMonth()];
+            var $A = $date.getFullYear();
+            var $H = $date.getHours();
+            //var $H = 15;
+            var $m = $date.getMinutes();
+            var $S = $date.getSeconds();
+
+            var $dateDuJour = $A + '-' + $M + '-' + $J;
+            var $heureDuJour = $H + ':' + $m + ':' + $S;
+
+            //alert($dateDuJour + ' --- ' + $heureDuJour);
+
+            /*                  Base                    */
+
+            $ticketJournee.addClass('boutonMenuActif');
+            $('#menu-xs').hide();
+            $messageDemiJournee.hide();
+            $messageNbTickets.hide();
+            $inputTypeTicket.attr('value', 'journée');
+            $inputDate.attr('value', $dateDuJour);
+            $('#message-flash').hide();
+
+            if($H >= 14 && $inputDate.val() == $dateDuJour) {
+
+                $('#matin').hide();
+                $ticketJournee.hide();
+                $ticketJournee.removeClass('boutonMenuActif');
+                $ticketDemiJournee.addClass('boutonMenuActif');
+                $inputTypeTicket.attr('value', 'demi-journée');
+                $messageDemiJournee.fadeIn(600);
+
+            }
+
+            /*                  Click menu hamburger                    */
+
+            $('#icon').on('click', function(){
+
+                $('#icon').toggleClass('isActive');
+                $('#menu-xs').fadeToggle(300);
+
+            });
+
+            /*                  Click ticket journée                    */
+
+            $ticketJournee.on('click', function(e) {
+
+                e.preventDefault();
+
+                var $this = $(this);
+                var $ticketValue = $this.val();
+
+                $inputTypeTicket.attr('value', $ticketValue);
+
+                $ticketDemiJournee.removeClass('boutonMenuActif');
+                $this.addClass('boutonMenuActif');
+                $('#matin').show();
+                $('.boutonHoraires').removeClass('boutonHoraireActif');
+                $('.boutonNombreTicket').removeClass('boutonTicketActif');
+                $('#prixTotal').text('0€');
+                $messageDemiJournee.fadeOut(600);
+
+            });
+
+            /*                  Click ticket demi-journée                    */
+
+            $ticketDemiJournee.on('click', function(e) {
+
+                e.preventDefault();
+
+                var $this = $(this);
+                var $ticketValue = $this.val();
+
+                $inputTypeTicket.attr('value', $ticketValue);
+
+                $ticketJournee.removeClass('boutonMenuActif');
+                $this.addClass('boutonMenuActif');
+                $('#matin').hide();
+                $('.boutonHoraires').removeClass('boutonHoraireActif');
+                $('.boutonNombreTicket').removeClass('boutonTicketActif');
+                $('#prixTotal').text('0€');
+                $messageDemiJournee.fadeIn(600);
+
+            });
+
+            /*                  DatePicker                  */
+
+            $(function() {
+
+                $('.datepicker').datepicker({
+
+                    defaultDate: "+1d",
+                    minDate: 0,
+                    beforeShowDay: function(date) {
+
+                        var $jours = date.getDay();
+                        var $jour = date.getDate();
+                        var $mois = date.getMonth()+1;
+
+                        if($jours == 2 || $jours == 0) {
+
+                            return [false];
+
+                        } else if($jour == 1 && $mois == 5) {
+
+                            return [false]
+
+                        } else if($jour == 1 && $mois == 11) {
+
+                            return [false]
+
+                        } else if($jour == 25 && $mois == 12) {
+
+                            return [false]
+
+                        } else {
+
+                            return [true];
+
+                        }
+
+                    },
+                    onSelect: function(dateText, inst) {
+
+                        var $datepickerValue = $(".datepicker").datepicker().val();
+                        $inputDate.attr('value', $datepickerValue);
+
+                        $.post('{{ path("check_tickets_date") }}', {
+
+                            datepickerValue: $datepickerValue
+
+                        }, function (response) {
+
+                            var $nbTicketsJournaliers = 1000 - response.nbTicketsJournaliers;
+
+                            //console.log($nbTicketsJournaliers);
+
+                            if($nbTicketsJournaliers < 1) {
+
+                                $boutonContinuer.fadeOut(600);
+                                $messageNbTickets.hide();
+                                $('.nombreTickets').remove();
+                                $messageNbTickets.addClass('messageNbTicketsInvalide').fadeIn(600).append('<div class = "nombreTickets"><h5>Nombre de tickets disponibles:</h5><p>' + $nbTicketsJournaliers + '</p></div>');
+                                capaciteMax = 1;
+
+                            } else {
+
+                                $boutonContinuer.fadeIn(600);
+                                $messageNbTickets.hide();
+                                $('.nombreTickets').remove();
+                                $messageNbTickets.addClass('messageNbTicketsValide').fadeIn(600).append('<div class = "nombreTickets"><h5>Nombre de tickets disponibles:</h5><p>' + $nbTicketsJournaliers + '</p></div>');
+                                capaciteMax = 0;
+
+                            }
+
+                        });
+
+                        if($H >= 14 && $inputDate.val() == $dateDuJour) {
+
+                            $('#matin').hide();
+                            $ticketJournee.hide();
+                            $ticketJournee.removeClass('boutonMenuActif');
+                            $ticketDemiJournee.addClass('boutonMenuActif');
+                            $inputTypeTicket.attr('value', 'demi-journée');
+                            $messageDemiJournee.fadeIn(600);
+
+                        } else if($ticketDemiJournee.hasClass('boutonMenuActif') == true) {
+
+                            $('#matin').hide();
+                            $ticketJournee.show();
+
+                        } else {
+
+                            $('#matin').show();
+
+                        }
+
+                    }
+
+                });
+
+            });
+
+            /* French initialisation for the jQuery UI date picker plugin. */
+            /* Written by Keith Wood (kbwood{at}iinet.com.au),
+             Stéphane Nahmani (sholby@sholby.net),
+             Stéphane Raimbault <stephane.raimbault@gmail.com> */
+            ( function( factory ) {
+                if ( typeof define === "function" && define.amd ) {
+
+                    // AMD. Register as an anonymous module.
+                    define( [ "../widgets/datepicker" ], factory );
+                } else {
+
+                    // Browser globals
+                    factory( jQuery.datepicker );
+                }
+            }( function( datepicker ) {
+
+                datepicker.regional.fr = {
+                    closeText: "Fermer",
+                    prevText: "Précédent",
+                    nextText: "Suivant",
+                    currentText: "Aujourd'hui",
+                    monthNames: [ "janvier", "février", "mars", "avril", "mai", "juin",
+                        "juillet", "août", "septembre", "octobre", "novembre", "décembre" ],
+                    monthNamesShort: [ "janv.", "févr.", "mars", "avr.", "mai", "juin",
+                        "juil.", "août", "sept.", "oct.", "nov.", "déc." ],
+                    dayNames: [ "dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi" ],
+                    dayNamesShort: [ "dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam." ],
+                    dayNamesMin: [ "D","L","M","M","J","V","S" ],
+                    weekHeader: "Sem.",
+                    dateFormat: "yy-mm-dd",
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: "" };
+                datepicker.setDefaults( datepicker.regional.fr );
+
+                return datepicker.regional.fr;
+
+            } ) );
+
+            /*                  click boutons horaires                */
+
+            $boutonHoraires.on('click', function(e) {
+
+                e.preventDefault();
+
+                var $this = $(this);
+                var $horaireValue = $(this).val();
+                var $getHeure = $horaireValue.substring(0, 2);
+                var $getMinute = $horaireValue.substring(3, 5);
+                var $horaire = $getHeure + ':' + $getMinute + ':00';
+                var $inputHoraires = $('[name = "appbundle_reservation[horaire]"]');
+
+                $boutonHoraires.removeClass('boutonHoraireActif');
+                $this.addClass('boutonHoraireActif');
+
+                $inputHoraires.attr('value', $horaire);
+
+            });
+
+            /*                  click boutons nombre ticket                */
+
+            $boutonNbTickets.on('click', function(e) {
+
+                e.preventDefault();
+
+                var $this = $(this);
+                var $nombreTicketValue = $this.val();
+                var $prix = 16 * $nombreTicketValue;
+                var $inputNbTickets = $('[name = "appbundle_reservation[nombre_ticket]"]');
+
+                $boutonNbTickets.removeClass('boutonTicketActif');
+                $this.addClass('boutonTicketActif');
+
+
+                $inputNbTickets.attr('value', $nombreTicketValue);
+                $prixTotal.text($prix + '€');
+
+            });
+
+            /*                  click bouton annuler                */
+
+            $boutonAnnuler.on('click', function() {
+
+                $boutonHoraires.removeClass('boutonHoraireActif');
+                $boutonNbTickets.removeClass('boutonTicketActif');
+                $prixTotal.text('0€');
+
+            })
+
+            /*                  click bouton continuer                  */
+
+            $boutonContinuer.on('click', function(e) {
+
+                var $this = $(this);
+
+                /*                   validation des données                  */
+
+                var $ticketType = $('#appbundle_reservation_type_ticket').val();
+                var $date = $('#appbundle_reservation_date').val();
+                var $horaire = $('#appbundle_reservation_horaire').val();
+                var $nbTicket = $('#appbundle_reservation_nombre_ticket').val();
+
+                if($ticketType == '') {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez choisir le type de ticket</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if(!$ticketType.match(/^journée$|^demi-journée$/)) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un type de ticket valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if($ticketType.match(/^demi-journée$/) && $horaire.match(/^[0-9]{1}:00:00$|^1[0-3]{1}:00:00$/) ) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un horaire valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if($date == '') {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez choisir une date</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if(!$date.match(/^(\d{4})-(\d{2})-(\d{2})$/) && ($dateDuJour.match(/^\d{4}-05-01$/) || $dateDuJour.match(/^\d{4}-11-01$/) || $dateDuJour.match(/^\d{4}-12-25$/))) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer une date valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if($horaire == '') {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez choisir un horaire</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if(!$horaire.match(/^(\d{2}):(0{2}):(0{2})$/)) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un horaire valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if($H >= 14 && ($inputDate.val() == $dateDuJour && $horaire.match(/^[0-9]{1}:00:00$|^1[0-3]{1}:00:00$/))) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un horaire valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if($nbTicket == '') {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez choisir un nombre de tickets</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if(!$nbTicket.match(/^[1-9]{1}$|^10$/)) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un nombre de ticket valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                } else if (capaciteMax === 1) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Capacité maximum de tickets atteinte pour cette date</p> <br /></div>').delay(1300).fadeOut(600);
+                    $this.prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $this.prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    return false;
+
+                }
+
+            });
+
+            /*                  affichage scrolling ticket info                 */
+
+            if($(window).width() < 768) {
+
+                $ticketInformations.hide();
+                $messageDemiJournee.addClass('hidden');
+
+                $(window).scroll(function() {
+
+                    var $wScroll = $(this).scrollTop();
+
+                    if($wScroll > $('#etape1').offset().top) {
+
+                        var $opacity = ($wScroll - $('#etape1').offset().top) / ($wScroll / 2);
+
+                        $ticketInformations.show();
+
+                        $ticketInformations.css({'opacity': $opacity});
+
+                    } else {
+
+                        $ticketInformations.hide();
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    </script>
+
+{% endblock %}

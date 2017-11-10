@@ -1,0 +1,620 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{ parent() }} - Réservation
+
+{% endblock %}
+
+{% block logo %}
+
+    <a href = "#reservation-sections"><img id = "logo" src = "{{ asset('Images/logo.png') }}" alt = "Logo" /></a>
+
+{% endblock %}
+
+{% block menu %}
+
+    <nav id = "menu">
+
+        <ul>
+
+            <a href = "{{ path('billetterie') }}"><li>Retour</li></a>
+            <a href = "{{ path('homepage') }}"><li>Accueil</li></a>
+
+        </ul>
+
+    </nav>
+
+{% endblock %}
+
+{% block menuXs %}
+
+    <nav id = "menu-xs">
+
+        <ul>
+
+            <a href = "{{ path('billetterie') }}"><li>Retour</li></a>
+            <a href = "{{ path('homepage') }}"><li>Accueil</li></a>
+
+        </ul>
+
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+    <div id = "paiement-sections">
+
+        <section id = "paiement">
+
+            <div id = "paiement-overlay">
+
+                <div class = "flex">
+
+                    <div class = "col-4">
+
+                        <div class = "formulairePaimentWrap text-center">
+
+                            <form id = "formulairePaiement" action = "{{ path('paiement', {'id': reservation.id}) }}" method = "POST">
+
+                                <p>
+
+                                    <label for = "numeroCarte">Numéro de carte : </label>
+                                    <input type = "text" id = "numeroCarte" class = "form-control text-center" required data-stripe = "number" />
+
+                                </p>
+
+                                <p>
+
+                                    <label for = "moisExpiration">Date d'expiration : </label>
+
+                                    <div id = "dateExpiration">
+
+                                        <input type = "text" id = "moisExpiration" class = "form-control text-center" required data-stripe = "exp_month" />
+                                        <span> / </span>
+                                        <input type = "text" id = "anneeExpiration" class = "form-control text-center" required data-stripe = "exp_year" />
+
+                                    </div>
+
+
+                                </p>
+
+                                <p>
+
+                                    <label for = "cvc">Cryptogramme : </label>
+                                    <input type = "text" id = "cvc" class = "form-control text-center" required data-stripe = "cvc" />
+
+                                </p>
+
+                                <p>
+
+                                    <button class = "btn form-control bouton-paiement">Valider</button>
+
+                                </p>
+
+                            </form>
+
+                        </div> {# formulairePaimentWrap #}
+
+                    </div> {# col-4 #}
+
+                </div> {# flex #}
+
+            </div> {# overlay #}
+
+        </section> {# section #}
+
+    </div> {# paiement-sections #}
+
+    <div id = "reservation-sections">
+
+        {{ form_start(ticketForm) }}
+
+        {% for nbTickets in 1..nbTickets %}
+
+            <section class = "formulaireTicket">
+
+                <div class = "formulaireTicket-overlay">
+
+                    <div class = "flex">
+
+                        <div class = "col-4">
+
+                            <h4 id = "ticket">Ticket numéro {{ nbTickets }}</h4>
+
+                            <div class = "formulaireClientWrap">
+
+                                <div class = "formulaireClient text-center">
+
+                                    <div class = "client{{ nbTickets }} form" id = "client{{ nbTickets }}">
+
+                                        <p>
+
+                                            <label for = "Nom{{ nbTickets }}">Nom: </label>
+                                            <input type = "text" name = "Nom{{ nbTickets }}" id = "Nom{{ nbTickets }}" class = "form-control text-center" required />
+
+                                        </p>
+
+                                        <p>
+
+                                            <label for = "Prenom{{ nbTickets }}">Prénom: </label>
+                                            <input type = "text" name = "Prenom{{ nbTickets }}" id = "Prenom{{ nbTickets }}" class = "form-control text-center" required />
+
+                                        </p>
+
+                                        <p>
+
+                                            <label for = "Email{{ nbTickets }}">Email: </label>
+                                            <input type = "email" name = "Email{{ nbTickets }}" id = "Email{{ nbTickets }}" class = "form-control text-center" required />
+
+                                        </p>
+
+                                        <p>
+
+                                            <label for = "Age{{ nbTickets }}">Age: </label>
+                                            <input type = "text" name = "Age{{ nbTickets }}" id = "Age{{ nbTickets }}" class = "form-control text-center" required />
+
+                                        </p>
+
+                                        <p>
+
+                                            <label for = "Nationalite{{ nbTickets }}">Nationalite: </label>
+
+                                                <select name = "Nationalite{{ nbTickets }}" id = "Nationalite{{ nbTickets }}" class = "form-control text-center" required>
+
+                                                    <option value = "Allemagne">Allemagne</option>
+                                                    <option value = "Angleterre">Angleterre</option>
+                                                    <option value = "Belgique">Belgique</option>
+                                                    <option value = "Espagne">Espagne</option>
+                                                    <option value = "France" selected>France</option>
+                                                    <option value = "Italie">Italie</option>
+                                                    <option value = "Luxembourg">Luxembourg</option>
+                                                    <option value = "Portugal">Portugal</option>
+                                                    <option value = "Suisse">Suisse</option>
+
+                                                </select>
+
+                                        </p>
+
+                                        <p>
+
+                                            <label for = "TarifReduit{{ nbTickets }}">Tarif réduit: </label>
+                                            <input type = "checkbox" name = "TarifReduit{{ nbTickets }}" id = "TarifReduit{{ nbTickets }}" class = "form-control checkbox" />
+
+                                        </p>
+
+                                        <p class = "hidden">
+
+                                            <label for = "PrixTicket{{ nbTickets }}">Prix: </label>
+                                            <input type = "text" name = "PrixTicket{{ nbTickets }}" id = "PrixTicket{{ nbTickets }}" class = "form-control" />
+
+                                        </p>
+
+                                        <p>
+
+                                            <button class = "btn form-control bouton-ticket" id = "validationClient{{ nbTickets }}" value = "{{ nbTickets }}">Valider</button>
+
+                                        </p>
+
+                                    </div>
+
+                                </div> {# formulaireClient #}
+
+                            </div> {# formulaireClientWrap #}
+
+                        </div> {# col-4 #}
+
+                    </div> {# flex #}
+
+                </div> {# formulaireTicket-overlay #}
+
+            </section> {# formulaireTicket #}
+
+        {% endfor %}
+
+    </div> {# reservation-sections #}
+
+    <div id = "ticketInformations">
+
+        <div id = "prix">
+
+            <h4>Total:</h4>
+
+            <p id = "prixTotal">0€</p>
+
+        </div>
+
+        <div id = "boutonsSubmit">
+
+            {{ form_widget(ticketForm.Annuler) }}
+            {{ form_widget(ticketForm.Payer) }}
+
+        </div>
+
+        <hr />
+
+        <div class = "messageDemiTarif text-center">
+
+            <h5>Ticket demi-tarif:</h5>
+
+            <p>
+
+                Etudiants, employés du Musée, Militaires, ministére de la cultutre,inscrit pôle emploi, etc...
+                Un justificatif vous sera demandé à l'entrée.
+
+            </p>
+
+        </div>
+
+        {{ form_end(ticketForm) }}
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+    {{ parent() }}
+
+    <script src = "https://js.stripe.com/v2/"></script>
+    <script src = "{{ asset('JS/stripeFunctions.js') }}"></script>
+
+    <script>
+
+        $(window).on('load', function() {
+
+            /*                  déclaration des variables                   */
+
+            var $clientForm = $('.formulaireClient');
+            var $boutonPayer = $('#appbundle_ticket_Payer');
+            var $boutonAnnuler = $('#appbundle_ticket_Annuler');
+            var $reservationSection = $('#reservation-sections');
+            var $paiementSection = $('#paiement-sections');
+            var $i = 0;
+            var $nombreTickets = {{ nbTickets }};
+            var $ticketInformations = $('#ticketInformations');
+            var $messageDemiTarif = $('.messageDemiTarif');
+            var $checkbox = $('.checkbox');
+
+            /*                  base                    */
+
+            $('#menu-xs').hide();
+            $('#message-erreur').hide();
+            $boutonPayer.hide();
+            $('#appbundle_ticket_prix').hide();
+            $('#message-flash').hide();
+            $paiementSection.hide();
+            $messageDemiTarif.hide();
+
+            if($(window).width() < 768) {
+
+                $ticketInformations.hide();
+
+            }
+
+            /*                  Click menu hamburger                    */
+
+            $('#icon').on('click', function(){
+
+                $('#icon').toggleClass('isActive');
+                $('#menu-xs').fadeToggle(300);
+
+            });
+
+            /*                  Click checkbox demi tarif                   */
+
+            $checkbox.on('click', function() {
+
+                if($checkbox.is(':checked')) {
+
+                    $messageDemiTarif.fadeIn(600);
+
+                } else {
+
+                    $messageDemiTarif.fadeOut(600);
+
+                }
+
+            })
+
+            /*                  Click bouton valider ticket                 */
+
+            $('.bouton-ticket').on('click', function(e) {
+
+
+                e.preventDefault();
+
+                var $this = $(this);
+                var $form = $this.closest($('.form'));
+                var $nbTickets = $this.val();
+                var $nom = $('#Nom' + $nbTickets).val();
+                var $prenom = $('#Prenom' + $nbTickets).val();
+                var $email = $('#Email' + $nbTickets).val();
+                var $age = $('#Age' + $nbTickets).val();
+                var $nationalite = $('#Nationalite' + $nbTickets).val();
+                var $checkboxTarifReduit = $('#TarifReduit' + $nbTickets);
+                var $tarifReduit = 'non';
+                var $prix = 0;
+
+                if($age >= 0 && $age < 4) {
+
+                    $prix = 0;
+
+                } else if($age >= 4 && $age < 12) {
+
+                    $prix = 8;
+
+                } else if($age >= 12 && $age < 60) {
+
+                    $prix = 16;
+
+                } else if ($age >= 60 && $age <= 150) {
+
+                    $prix = 12;
+
+                }
+
+                if($checkboxTarifReduit.is(':checked')) {
+
+                    $tarifReduit = 'oui';
+                    $prix = 10;
+
+                } else {
+
+                    $tarifReduit = 'non';
+
+                }
+
+                $('#prixTotal').text($prix + '€');
+
+                /*                  Validation des données Formulaire                   */
+
+                var $validation = 1;
+
+                if($nom == '') {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un nom</p> <br /></div>').delay(1300).fadeOut(600);
+                    $('.bouton-ticket').prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $('.bouton-ticket').prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    $validation = 0;
+
+                } else if(!$nom.match(/^[a-z]+$/i)) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un nom valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $('.bouton-ticket').prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $('.bouton-ticket').prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    $validation = 0;
+
+                } else if ($prenom == '') {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un prénom</p> <br /></div>').delay(1300).fadeOut(600);
+                    $('.bouton-ticket').prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $('.bouton-ticket').prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    $validation = 0;
+
+                } else if(!$prenom.match(/^[a-z]+$/i)) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un prénom valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $('.bouton-ticket').prop('disabled', true);
+                    setTimeout(function () {
+
+                        $('.message').remove();
+                        $('.bouton-ticket').prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    $validation = 0;
+
+                } else if ($email == '') {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un e-mail</p> <br /></div>').delay(1300).fadeOut(600);
+                    $('.bouton-ticket').prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $('.bouton-ticket').prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    $validation = 0;
+
+                } else if(!$email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i)) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un e-mail valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $('.bouton-ticket').prop('disabled', true);
+                    setTimeout(function () {
+
+                        $('.message').remove();
+                        $('.bouton-ticket').prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    $validation = 0;
+
+                } else if ($age == '') {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un âge</p> <br /></div>').delay(1300).fadeOut(600);
+                    $('.bouton-ticket').prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $('.bouton-ticket').prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    $validation = 0;
+
+                } else if (!$age.match(/(^[0-9]{1}$|^[1-9]{1}[0-9]{1}$|^1([0-4]{1})([0-9]{1})$|^150$)/)) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Veuillez entrer un âge valide</p> <br /></div>').delay(1300).fadeOut(600);
+                    $('.bouton-ticket').prop('disabled', true);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $('.bouton-ticket').prop('disabled', false);
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                    $validation = 0;
+
+                }
+
+                if($validation == 1) {
+
+                    var $formContainer = $this.closest($clientForm);
+                    var $container = $this.closest($('.formulaireTicket'));
+                    var $containerHeight = $container.height();
+
+                    $form.hide();
+                    $formContainer.append('<img class = "ajaxLoader" src = "{{ asset('Images/ajax-loader.gif') }}" />');
+
+                    $.ajax({
+
+                        type: 'POST',
+                        url: '{{ path("add_client", {'ticketId': ticketId}) }}',
+                        data: {
+                            nom: $nom,
+                            prenom: $prenom,
+                            email: $email,
+                            age: $age,
+                            nationalite: $nationalite,
+                            tarifReduit: $tarifReduit,
+                            prix: $prix
+                        },
+                        success: function(response) {
+
+                            var $successMessage = response.successMessage ;
+                            var $nouveauPrix = response.nouveauPrix;
+                            var $ajaxLoader = $('.ajaxLoader');
+
+                            $ajaxLoader.closest($clientForm).addClass('valide')
+                                .append('<object type="image/svg+xml" data="{{ asset("Images/check.svg") }}"></object>');
+
+                            $ajaxLoader.remove();
+
+                            var $icone = $('.checkSign');
+
+                            $icone.hide();
+                            $icone.delay(800).fadeIn(500).hide();
+
+                            $('html, body').delay(1500).animate( {
+
+                                scrollTop: window.pageYOffset + $containerHeight
+
+                            }, 800);
+
+
+
+                            $('#message-flash').addClass('message-succes').fadeIn(600).append('<div class = "message"><p>' + $successMessage + '</p> <br /></div>').delay(1300).fadeOut(600);
+                            $('.bouton-ticket').prop('disabled', true);
+                            setTimeout(function() {
+
+                                $('.message').remove();
+                                $('.bouton-ticket').prop('disabled', false);
+                                $('#message-flash').removeClass('message-succes');
+
+                            }, 2600);
+
+                            if(typeof $nouveauPrix != 'undefined') {
+
+                                $('#prixTotal').text($nouveauPrix + '€');
+
+                            }
+
+                            $nombreTickets -= 1;
+
+                            if ($nombreTickets === $i) {
+
+                                if($(window).width() < 768) {
+
+                                    $ticketInformations.css('opacity', '1');
+                                    $ticketInformations.delay(2700).fadeIn(500);
+
+                                }
+
+                                $boutonAnnuler.hide();
+                                $boutonPayer.show();
+
+                            }
+
+                        },
+
+                        error: function() {
+
+                            var $ajaxLoader = $('.ajaxLoader');
+
+                            $ajaxLoader.remove();
+                            $form.fadeIn(600);
+                            $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Une erreur s\'est produite lors de l\'envoi du formulaire</p> <br /></div>').delay(1300).fadeOut(600);
+                            $('.bouton-ticket').prop('disabled', true);
+                            setTimeout(function() {
+
+                                $('.message').remove();
+                                $('.bouton-ticket').prop('disabled', false);
+                                $('#message-flash').removeClass('message-erreur');
+
+                            }, 2600);
+
+                            $validation = 0;
+                            return false;
+
+                        }
+
+                    });
+
+                    return false;
+
+                }
+
+            });
+
+            /*                  Click bouton payer                  */
+
+            $boutonPayer.on('click', function(e) {
+
+               e.preventDefault();
+
+               $reservationSection.fadeOut(500);
+               $boutonPayer.fadeOut(500);
+               $paiementSection.delay(500).fadeIn(800);
+
+                if($(window).width() < 768) {
+
+                    $ticketInformations.fadeOut(500);
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+{% endblock %}

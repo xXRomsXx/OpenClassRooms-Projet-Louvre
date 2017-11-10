@@ -1,0 +1,18 @@
+<svg class = "checkMark" height = "200" width = "200" xmlns = "http://www.w3.org/2000/svg" version = "1.1" viewBox="0 0 48 48">
+
+    <path
+            class = "checkMarkPath"
+            fill = "#5cb85c"
+            fill-opacity = "0"
+            d = "M18 32.34l-8.34-8.34-2.83 2.83 11.17 11.17 24-24-2.83-2.83z"
+            stroke = "#5cb85c"
+            stroke-dasharray = "99.47578430175781px"
+            stroke-dashoffset = "-99.47578430175781px"
+    >
+
+        <animate attributeName = "stroke-dashoffset" attributeType = "XML" form = "-99.47578430175781px" to = "0" begin = "0.5s" dur = "0.5s" fill = "freeze" />
+        <animate attributeName = "fill-opacity" attributeType = "XML" from = "0" to = "1" begin = "1s" dur = "0.5s" fill = "freeze" />
+
+    </path>
+
+</svg>

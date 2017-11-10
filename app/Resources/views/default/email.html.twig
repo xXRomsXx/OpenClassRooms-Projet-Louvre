@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head></head>
+
+    <body>
+
+    <div id = "mailTicket" style = "border: 2px solid #060606">
+
+        <div id = "mailHeader" style ="display: flex">
+
+            <img src = "http://louvre-billetterie.romaingravier.fr/Images/logo.png" width = "150px" height = "150px" />
+            <h2 style = "margin: 20px 20px">numéro de réservation: {{ reservation.numeroReservation }}</h2>
+            <h2 style = "margin: 20px 20px">Tarif: {{ prix }}€</h2>
+
+        </div>
+
+        <div id = "mailBody" style = "text-align: center">
+
+            <h2>Nom: {{ nom }}</h2>
+            <h2>Prénom: {{ prenom }}</h2>
+
+        </div>
+
+    </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,288 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{ parent() }} - Billeterie
+
+{% endblock %}
+
+{% block logo %}
+
+    <a href = "#introduction"><img id = "logo" src = "{{ asset('Images/logo.png') }}" alt = "Logo" /></a>
+
+{% endblock %}
+
+{% block menu %}
+
+    <nav id = "menu">
+
+        <ul>
+
+            <a href = "#billets"><li class = "active">Achetez vos billets</li></a>
+            <a href = "#infos"><li>Infos pratiques</li></a>
+            <a href = "#contact"><li>Contact</li></a>
+
+        </ul>
+
+    </nav>
+
+{% endblock %}
+
+{% block menuXs %}
+
+    <nav id = "menu-xs">
+
+        <ul>
+
+            <a href = "#billets"><li class = "active">Achetez vos billets</li></a>
+            <a href = "#infos"><li>Infos pratiques</li></a>
+            <a href = "#contact"><li>Contact</li></a>
+
+        </ul>
+
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+<!--                                                  Sections
+=====================================================================================================================-->
+
+        <div id = "home-sections">
+
+            <section id = "introduction">
+
+                <div id = "intro-overlay">
+
+                    <div class = "flex flex-center">
+
+                        <div class = "col-1">
+
+                            <h2>Fatigué d'attendre dans des files interminables?</h2>
+                            <p>Pour vous, le musée du Louvre déroule le tapis rouge ...</p>
+
+                        </div>
+
+                    </div> {# flex #}
+
+                </div> {# Overlay #}
+
+            </section> {# introduction #}
+
+            <section id = "billets">
+
+                <div id = "billets-overlay">
+
+                    <div class = "flex">
+
+                        <div class = "col-2">
+
+                            <div class = "imagesBillets">
+
+                                <img src = "{{ asset('Images/psychecupid.jpg') }}" alt = "Psyche" />
+                                <img src = "{{ asset('Images/meduse.jpg') }}" alt = "Méduse" />
+                                <img src = "{{ asset('Images/joconde.jpg') }}" alt = "Joconde" />
+                                <img src = "{{ asset('Images/ergastines.jpg') }}" alt = "Plaque des ergastines" />
+
+                            </div>
+
+                            <div class = "imagesBillets">
+
+                                <img src = "{{ asset('Images/sabines.jpg') }}" alt = "Enlèvement des Sabines" />
+                                <img src = "{{ asset('Images/hammurabi.jpg') }}" alt = "Code d'Hammourabi" />
+                                <img src = "{{ asset('Images/milo.jpg') }}" alt = "Venus de Milo" />
+                                <img src = "{{ asset('Images/louis.jpg') }}" alt = "Louis XIV" />
+
+                            </div>
+
+                            <div class = "imagesBillets">
+
+                                <img src = "{{ asset('Images/jugement.jpg') }}" alt = "Mosaïque du jugement" />
+                                <img src = "{{ asset('Images/cana.jpg') }}" alt = "Les noces de Cana" />
+                                <img src = "{{ asset('Images/archers.jpg') }}" alt = "Frise des archers" />
+                                <img src = "{{ asset('Images/odalisque.jpg') }}" alt = "Odalisque" />
+
+                            </div>
+
+                        </div>
+
+                        <div class = "col-2 order-first text-center">
+
+                            <h2>... grâce à la billeterie en ligne. Achetez dès maintenant vos billets en quelques clics ...</h2>
+                            <a href = "{{ path('billetterie') }}"><button class = "boutonBillets">J'achète</button></a>
+
+                        </div>
+
+                    </div> {# flex #}
+
+                </div> {# overlay #}
+
+            </section> {# billets #}
+
+            <section id = "infos">
+
+                <div id = "infos-overlay">
+
+                    <div class = "flex">
+
+                        <div id = "infosCarousel" class = "col-2 carousel slide" data-ride = "carousel">
+
+                            {#                  Diapositives                    #}
+
+                            <div class = "carousel-inner text-center">
+
+                                <div class = "item active">
+
+                                    <h3>Horaires:</h3>
+
+                                    <ul id = "horraires">
+
+                                        <li>Lundi: 9H - 19H</li>
+                                        <li>Mardi: Fermé</li>
+                                        <li>Mercredi: 9H - 19H</li>
+                                        <li>Jeudi: 9H - 19H</li>
+                                        <li>Vendredi: 9H - 19H</li>
+                                        <li>Samedi: 9H - 19H</li>
+                                        <li>Dimanche: 9H - 19H</li>
+
+                                    </ul>
+
+                                    <p>Fermeture les 1er Mai, 1er Novembre et 25 Décembre.</p>
+
+                                </div>
+
+                                <div class = "item">
+
+                                    <h3>Tarifs:</h3>
+
+                                    <ul id = "tarifs">
+
+                                        <li>Tarif enfants (4 - 11 ans): 8€ *</li>
+                                        <li>Tarif normal (12 - 59 ans): 16€</li>
+                                        <li>Tarif senior ( 60 ans et plus): 12€</li>
+                                        <li>Tarif réduit: 10€ **</li>
+
+                                    </ul>
+
+                                    <p>
+
+                                        * Entrée gratuite pour les enfants de moins de 4 ans. <br />
+                                        ** Etudiants, employés du Musée, Militaires, ministére de la cultutre,
+                                        inscrit pôle emploi, etc... Un justificatif vous sera demandé à l'entrée.
+
+                                    </p>
+
+                                </div>
+
+                                <div class = "item">
+
+                                    <h3>Billets:</h3>
+
+                                    <ul id = "typesBillets">
+
+                                        <li>Billet journée</li>
+                                        <li>Billets Demi-journée *</li>
+
+                                    </ul>
+
+                                    <p>* Entrée à partir de 14H.</p>
+
+                                </div>
+
+                            </div> {# carousel-inner #}
+
+                            {#                  Controles                   #}
+
+                            <a class = "left carousel-control" href = "#infosCarousel" data-slide = "prev">
+
+                                <span class = "glyphicon glyphicon-chevron-left"></span>
+
+                            </a>
+
+                            <a class = "right carousel-control" href = "#infosCarousel" data-slide = "next">
+
+                                <span class = "glyphicon glyphicon-chevron-right"></span>
+
+                            </a>
+
+                        </div> {# infosCarousel #}
+
+                        <div class = "col-2 text-center">
+
+                            <h2>... Besoin d'en savoir plus? Lisez ces quelques informations utiles ...</h2>
+
+                        </div>
+
+                    </div> {# flex #}
+
+                </div> {# overlay #}
+
+            </section> {# infos #}
+
+            <section id = "contact">
+
+                <div id = "contact-overlay">
+
+                    <div class = "flex-column text-center">
+
+                        <div class = "col-3">
+
+                            <h2>... Besoin de plus d'informations? Contactez nous ...</h2>
+
+                        </div>
+
+                        <div id = "contact-block" class = "col-3">
+
+                            <div id = "block-API-container" class = "col-2">
+
+                                <div id = "block-API"></div>
+
+                            </div>
+
+                            <div id = "block-text-container" class = "col-2">
+
+                                <ul id = "block-text">
+
+                                    <li id = "telephone">
+
+                                        <span class = "glyphicon glyphicon-earphone fa-2x"></span> 01 40 20 53 17
+
+                                    </li>
+
+                                    <li id = "email">
+
+                                        <span class = "glyphicon glyphicon-envelope fa-2x"></span> info@louvre.fr
+
+                                    </li>
+
+                                    <li id = "adresse">
+
+                                        <span class = "glyphicon glyphicon-map-marker fa-2x"></span> Musée du Louvre, 75001 Paris
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div> {# flex #}
+
+                </div> {# overlay #}
+
+            </section> {# contact #}
+
+        </div> {# home-sections #}
+
+{% endblock %}
+
+{% block javascript %}
+
+    {{ parent() }}
+
+    <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBaVXf8BfKLCtfQYWuelKcQwkugIE16hb0&callback=initMap" async defer></script>
+    <script src = "{{ asset('JS/homeFunctions.js') }}"></script>
+
+{% endblock %}

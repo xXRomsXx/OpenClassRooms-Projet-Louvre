@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{ parent() }} - réservation enregistrée
+
+{% endblock %}
+
+{% block logo %}{% endblock %}
+{% block menu %}{% endblock %}
+{% block menuXs %}{% endblock %}
+
+{% block body %}
+
+    <section id = "thankYouPage">
+
+        <div id = "thankYouPageOverlay">
+
+            <div id = "thankYouPageContent" class = "col-3 flex flex-center flex-align-items-center">
+
+                <div id = "thankYouMessage">
+
+                    <h4>Votre réservation a bien été enregistrée.</h4>
+
+                    <object id = "thankYouCheckSign" type="image/svg+xml" data="{{ asset("Images/check.svg") }}"></object>
+
+                    <h5>consultez votre email pour récupérer votre ticket.</h5>
+
+                    <p>si vous n'avez pas reçu de mail, contactez nous.</p>
+
+                    <a href = "{{ path('homepage') }}"><button id = "homePageCTA" class = "btn btn-lg">Retour à l'accueil</button></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+    {{ parent() }}
+
+    <script src = "{{ asset('JS/paiementFunctions.js') }}"></script>
+
+{% endblock %}

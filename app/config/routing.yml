@@ -1,0 +1,45 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+homepage:
+    path: /
+    defaults:
+      _controller: "AppBundle:Default:index"
+
+billetterie:
+    path: /billetterie
+    defaults:
+      _controller: "AppBundle:Default:billetterie"
+
+check_tickets_date:
+    path: /billeterie/check
+    defaults:
+      _controller: "AppBundle:Default:checkNbTicketsParDate"
+
+add_reservation:
+    path: /reservation
+    defaults:
+      _controller: "AppBundle:Default:addReservation"
+
+add_client:
+    path: /tickets/addClient/{ticketId}
+    defaults:
+      _controller: "AppBundle:Default:addClient"
+    requirements:
+      ticketId: \d+
+
+tickets:
+    path: /tickets/{id}/{ticketId}
+    defaults:
+      _controller: "AppBundle:Default:tickets"
+    requirements:
+      id: \d+
+      ticketId: \d+
+
+paiement:
+    path: /paiement/{id}
+    defaults:
+      _controller: "AppBundle:Default:paiement"
+    requirements:
+      id: \d+

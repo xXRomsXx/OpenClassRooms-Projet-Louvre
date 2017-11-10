@@ -1,0 +1,219 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reservation
+ *
+ * @ORM\Table(name="reservation")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ReservationRepository")
+ */
+class Reservation
+{
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Ticket", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\JoinColumn(nullable=true)
+     */
+
+    private $ticket;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name="horaire", type="string", length=255)
+     */
+    private $horaire;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_ticket", type="string", length=255)
+     */
+    private $typeTicket;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nombre_ticket", type="integer")
+     */
+    private $nombreTicket;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="paye", type="boolean")
+     */
+    private $paye = false;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Reservation
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set horaire
+     *
+     * @param \string $horaire
+     *
+     * @return Reservation
+     */
+    public function setHoraire($horaire)
+    {
+        $this->horaire = $horaire;
+
+        return $this;
+    }
+
+    /**
+     * Get horaire
+     *
+     * @return \string
+     */
+    public function getHoraire()
+    {
+        return $this->horaire;
+    }
+
+    /**
+     * Set typeTicket
+     *
+     * @param string $typeTicket
+     *
+     * @return Reservation
+     */
+    public function setTypeTicket($typeTicket)
+    {
+        $this->typeTicket = $typeTicket;
+
+        return $this;
+    }
+
+    /**
+     * Get typeTicket
+     *
+     * @return string
+     */
+    public function getTypeTicket()
+    {
+        return $this->typeTicket;
+    }
+
+    /**
+     * Set nombreTicket
+     *
+     * @param int $nombreTicket
+     *
+     * @return Reservation
+     */
+    public function setNombreTicket($nombreTicket)
+    {
+        $this->nombreTicket = $nombreTicket;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreTicket
+     *
+     * @return int
+     */
+    public function getNombreTicket()
+    {
+        return $this->nombreTicket;
+    }
+
+    /**
+     * Set ticket
+     *
+     * @param \AppBundle\Entity\Ticket $ticket
+     *
+     * @return Reservation
+     */
+    public function setTicket(\AppBundle\Entity\Ticket $ticket)
+    {
+        $this->ticket = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Get ticket
+     *
+     * @return \AppBundle\Entity\Ticket
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
+    }
+
+    /**
+     * Set paye
+     *
+     * @param boolean $paye
+     *
+     * @return Reservation
+     */
+    public function setPaye($paye)
+    {
+        $this->paye = $paye;
+
+        return $this;
+    }
+
+    /**
+     * Get paye
+     *
+     * @return boolean
+     */
+    public function getPaye()
+    {
+        return $this->paye;
+    }
+}
