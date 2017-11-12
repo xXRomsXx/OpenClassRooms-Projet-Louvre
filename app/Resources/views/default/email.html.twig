@@ -13,6 +13,7 @@
             <img src = "http://louvre-billetterie.romaingravier.fr/Images/logo.png" width = "150px" height = "150px" />
             <h2 style = "margin: 20px 20px">numéro de réservation: {{ reservation.numeroReservation }}</h2>
             <h2 style = "margin: 20px 20px">Tarif: {{ prix }}€</h2>
+            <h2>Date: {{ reservation.date|date('d/m/Y') }}</h2>
 
         </div>
 
