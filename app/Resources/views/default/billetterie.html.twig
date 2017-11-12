@@ -322,7 +322,22 @@
                 $('.boutonHoraires').removeClass('boutonHoraireActif');
                 $('.boutonNombreTicket').removeClass('boutonTicketActif');
                 $('#prixTotal').text('0€');
-                $messageDemiJournee.fadeIn(600);
+
+                if($(window).width() < 768) {
+
+                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Tickets demi-journée : entrée à partir de 14H</p> <br /></div>').delay(1300).fadeOut(600);
+                    setTimeout(function() {
+
+                        $('.message').remove();
+                        $('#message-flash').removeClass('message-erreur');
+
+                    }, 2600);
+
+                } else {
+
+                    $messageDemiJournee.fadeIn(600);
+
+                }
 
             });
 
@@ -383,16 +398,46 @@
                                 $boutonContinuer.fadeOut(600);
                                 $messageNbTickets.hide();
                                 $('.nombreTickets').remove();
-                                $messageNbTickets.addClass('messageNbTicketsInvalide').fadeIn(600).append('<div class = "nombreTickets"><h5>Nombre de tickets disponibles:</h5><p>' + $nbTicketsJournaliers + '</p></div>');
                                 capaciteMax = 1;
+
+                                if($(window).width() < 768) {
+
+                                    $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Nombre de tickets disponible: ' + $nbTicketsJournaliers + '</p> <br /></div>').delay(1300).fadeOut(600);
+                                    setTimeout(function() {
+
+                                        $('.message').remove();
+                                        $('#message-flash').removeClass('message-erreur');
+
+                                    }, 2600);
+
+                                } else {
+
+                                    $messageNbTickets.addClass('messageNbTicketsInvalide').fadeIn(600).append('<div class = "nombreTickets"><h5>Nombre de tickets disponibles:</h5><p>' + $nbTicketsJournaliers + '</p></div>');
+
+                                }
 
                             } else {
 
                                 $boutonContinuer.fadeIn(600);
                                 $messageNbTickets.hide();
                                 $('.nombreTickets').remove();
-                                $messageNbTickets.addClass('messageNbTicketsValide').fadeIn(600).append('<div class = "nombreTickets"><h5>Nombre de tickets disponibles:</h5><p>' + $nbTicketsJournaliers + '</p></div>');
                                 capaciteMax = 0;
+
+                                if($(window).width() < 768) {
+
+                                    $('#message-flash').addClass('message-succes').fadeIn(600).append('<div class = "message"><p>Nombre de tickets disponible: ' + $nbTicketsJournaliers + '</p> <br /></div>').delay(1300).fadeOut(600);
+                                    setTimeout(function() {
+
+                                        $('.message').remove();
+                                        $('#message-flash').removeClass('message-succes');
+
+                                    }, 2600);
+
+                                } else {
+
+                                    $messageNbTickets.addClass('messageNbTicketsValide').fadeIn(600).append('<div class = "nombreTickets"><h5>Nombre de tickets disponibles:</h5><p>' + $nbTicketsJournaliers + '</p></div>');
+
+                                }
 
                             }
 
@@ -691,6 +736,7 @@
 
                 $ticketInformations.hide();
                 $messageDemiJournee.addClass('hidden');
+                $messageNbTickets.addClass('hidden');
 
                 $(window).scroll(function() {
 

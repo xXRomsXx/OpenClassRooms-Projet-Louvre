@@ -774,6 +774,33 @@ body {
 
 }
 
+@media screen and (max-width: 600px) {
+
+    /*                  Introduction                    */
+    .col-1 h2 {
+
+        font-size: 1em;
+        padding-bottom: 340px;
+
+    }
+
+    .col-1 p {
+
+        margin-left: 60px;
+        font-size: 0.7em;
+
+    }
+
+    /*                  Billets                 */
+    .boutonBillets {
+
+        margin: 10px 0;
+
+    }
+
+}
+
+
 /*                                                Billetterie Content
 ======================================================================================================================*/
 
@@ -890,7 +917,7 @@ body {
 
 .ui-datepicker {
 
-    width: 50%;
+    width: 60%;
     opacity: 0.4;
 
 }
@@ -1163,6 +1190,26 @@ body {
 
 }
 
+@media screen and (max-width: 600px) {
+
+    /*                  Etape 1                 */
+
+    .ui-datepicker {
+
+        width: 80%;
+        opacity: 0.4;
+
+    }
+
+    /*                  ticket information                  */
+
+    #ticketInformations {
+
+        height: 30.7vh;
+
+    }
+
+}
 
 /*                                                Tickets Content
 ======================================================================================================================*/
@@ -1230,7 +1277,8 @@ body {
     background-size: cover;
     background-position: right bottom;
     opacity: 0.7;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
     transition: all 0.3s ease-in-out;
 
 }
@@ -1245,6 +1293,7 @@ body {
 
     background: rgba(30, 0, 10, 0.7);
     min-height: 100vh;
+    width: 100%;
 
 }
 
@@ -1272,7 +1321,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100vh;
+    width: 70%;
     height: 85vh;
     background: #060606;
     opacity: 0.5;
@@ -1301,8 +1350,14 @@ body {
 .formulaireClient input, .formulaireClient select {
 
     color: #060606;
-    width: 70vh;
+    width: 100%;
     margin: 5px 0;
+
+}
+
+.form {
+
+    width: 80%;
 
 }
 
@@ -1343,6 +1398,30 @@ body {
 
 }
 
+@media screen and (max-width: 600px) {
+
+    .formulaireClient {
+
+        width: 90%;
+
+    }
+
+    .formulaireClient input, .formulaireClient select {
+
+        width: 100%;
+
+    }
+
+
+
+    select, textarea, input {
+
+        font-size: 16px;
+
+    }
+
+}
+
 /*                  Paiement section                    */
 
 #paiement-sections {
@@ -1375,6 +1454,7 @@ body {
     background: url('../Images/paiment-background.jpg');
     background-size: cover;
     min-height: 100vh;
+    width: 80%;
     color: #efefef;
     opacity: 0.7;
     transition: all 0.3s ease-in-out;
@@ -1403,7 +1483,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80vh;
+    width: 600px;
     height: 50vh;
     background: #060606;
     opacity: 0.5;
@@ -1417,12 +1497,13 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    width: 90%;
 
 }
 
 #formulairePaiement p {
 
-    width: 70vh;
+    width: 100%;
     margin: 5px 0;
 
 }
@@ -1468,6 +1549,32 @@ body {
 
     background: #5cb85c;
     border-color: #4cae4c;
+
+}
+
+@media screen and (max-width: 768px) {
+
+    #paiement {
+
+        width: 100%;
+
+    }
+
+    .formulairePaimentWrap {
+
+        width: 400px;
+
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .formulairePaimentWrap {
+
+        width: 300px;
+
+    }
 
 }
 
@@ -1538,5 +1645,25 @@ body {
 
     background: #5cb85c;
     border-color: #4cae4c;
+
+}
+
+@media screen and (max-width: 768px) {
+
+    #thankYouMessage {
+
+        width: 80%;
+
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    #thankYouMessage {
+
+        width: 100%;
+
+    }
 
 }

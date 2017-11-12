@@ -240,7 +240,7 @@
 
             <p>
 
-                Etudiants, employés du Musée, Militaires, ministére de la cultutre,inscrit pôle emploi, etc...
+                Etudiants, employés du Musée, militaires, ministére de la cultutre, inscrit pôle emploi, etc...
                 Un justificatif vous sera demandé à l'entrée.
 
             </p>
@@ -308,7 +308,21 @@
 
                 if($checkbox.is(':checked')) {
 
-                    $messageDemiTarif.fadeIn(600);
+                    if($(window).width() < 768) {
+
+                        $('#message-flash').addClass('message-erreur').fadeIn(600).append('<div class = "message"><p>Etudiants, employés du Musée, militaires, ministére de la cultutre, inscrit pôle emploi, etc... Un justificatif vous sera demandé à l\'entrée.</p> <br /></div>').delay(2500).fadeOut(600);
+                        setTimeout(function() {
+
+                            $('.message').remove();
+                            $('#message-flash').removeClass('message-erreur');
+
+                        }, 3800);
+
+                    } else {
+
+                        $messageDemiTarif.fadeIn(600);
+
+                    }
 
                 } else {
 
